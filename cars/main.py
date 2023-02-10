@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from cars.config import settings
 from cars.routers.get_all_cars import get_all_cars_router
+from cars.routers.get_car_by_colour import get_car_by_colour_router
 from cars.database import init_db
 
 logging.basicConfig(level=settings.LOGGING_LEVEL, format="%(levelname)s: %(name)s %(asctime)s:%(message)s")
@@ -12,6 +13,7 @@ logger = logging.getLogger("jam_density_bandit.main")
 
 app = FastAPI(title="Cars")
 app.include_router(get_all_cars_router)
+app.include_router(get_car_by_colour_router)
 
 
 @app.on_event("startup")
